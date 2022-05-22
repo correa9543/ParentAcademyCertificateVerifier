@@ -6,6 +6,7 @@ parentIDs = {}
 parentCertificates = {}
 courseNames = []
 
+# This function is used to open and read from a CSV file 
 def openCSV(file):
     with open('ClassesAttendedReference.csv', 'r') as file:
         reader = csv.reader(file)
@@ -19,8 +20,8 @@ def openCSV(file):
                 parentIDs[id].append(course)
                 parentCertificates[id] = []
 
-# this function is checking if the courses the parents took are in the list of series
-#I need to compare the items in the lists of series to the list of courses parents took
+# This function is used to search the courses from the dictionaries that were created below. 
+# We compare the courses in the series dictionaries to the courses the parents actually took
 def searchCourses():
     for id in parentIDs:
         for series in courseSeries:
@@ -45,17 +46,19 @@ def storeCertificateNames():
             
     
 
-
+# This function is used to display all the certificates the parents have earned
 def displayCertificates():
     for id, certificates in parentCertificates:
         print(id, courseAbbreviations[certificates])
 
 
+# This dictionary holds all the courses in the LinkedIn series
 linkedInCourses = [
     "LinkedIn-1",
     "LinkedIn-2"
 ]
 
+# This dictionary holds all the courses in the Google Drive series
 googleDrive = [
     "Google Drive-1",
     "Google Drive-2",
@@ -66,21 +69,25 @@ googleDrive = [
     "Google Sheets Practice Session"
 ]
 
+# This dictionary holds all the courses in the Career Exploration series
 careerExploration = [
     "Career Exploration Program of Study Pt. 1",
     "Career Exploration Program of Study Pt. 2",
     "Career Exploration Program of Study Pt. 3"
 ]
 
+# This dictionary holds all the courses in the Zoom series
 zoom = {
     "Zoom-1",
     "Zoom-2"
 }
 
+# This dictionary holds all the courses in the Typing series
 typing = [
     "Typing-1"
 ]
 
+# This dictionary holds all the courses in the Math series
 basicMath = [
     "Math-1 pt. 1",
     "Math-1 pt. 2",
@@ -89,6 +96,7 @@ basicMath = [
     "Math-2 pt. 2"
 ]
 
+# This dictionary holds all the courses in the Career Development series
 careerDevelopment = [
     "SMART Goals Pt. 1",
     "SMART Goals Pt. 2",
@@ -101,6 +109,7 @@ careerDevelopment = [
     "Resume Writing"
 ]
 
+# This dictionary holds all the codes and their respective representations
 courseAbbreviations = {
     "LI": "LinkedIn Course",
     "GD": "Google Drive Course",
@@ -111,6 +120,7 @@ courseAbbreviations = {
     "CD": "Career Development Program Of Study"
 }
 
+# This dictionary holds all the codes and their respective representations
 reverseCourseAbbreviations = {
     "LinkedIn Course" : "LI",
     "Google Drive Course": "GD",
@@ -121,7 +131,7 @@ reverseCourseAbbreviations = {
     "Career Development Program Of Study": "CD"
 }
 
-
+# This dictionary will hold all of the Series that are in the Parent Academy
 courseSeries = {
    "LinkedIn Course": linkedInCourses,
    "Google Drive Course": googleDrive,
@@ -134,15 +144,14 @@ courseSeries = {
     
 
 
-
+# Function calls
 openCSV("ClassesAttendedReference.csv")
 searchCourses()
 storeCertificateNames()
 # displayCertificates()
 
 print ('\n'.join(parentCertificates["4"]), "\n")
-# print(courseAbbreviations["CD"])
-# print(parentCertificates)
+print("-------------------------")
 print ('\n'.join(parentIDs["4"]), "\n")
 
 
